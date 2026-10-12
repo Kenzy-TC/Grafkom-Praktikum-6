@@ -4,6 +4,13 @@
 **Topik:** Introduction to Three.js  
 **Implementasi:** seluruh Challenge A–H dari modul Pertemuan 6.
 
+| Detail | Keterangan |
+| --- | --- |
+| **Nama Anggota 1** | Mario Napitupulu |
+| **NRP Anggota 1** | 5025241085 |
+| **Nama Anggota 2** | Nathanael Oliver Amadhika Yuswana |
+| **NRP Anggota 2** | 5025241109 |
+
 ## Deskripsi
 
 Scene interaktif berisi cube yang dapat dikontrol, sphere animasi, ground, material gallery, cylinder, cone, torus, AmbientLight, serta DirectionalLight bergerak. Scene memakai `OrbitControls`, shadow map, HUD statistik, dua mode kamera, dan animasi berbasis delta time.
@@ -77,7 +84,3 @@ Folder `node_modules/` tidak perlu dikumpulkan karena dapat dibuat ulang dengan 
 
 Three.js menyederhanakan pekerjaan grafika 3D yang sebelumnya dilakukan langsung melalui WebGL. Geometry dan Material dapat digabungkan menjadi Mesh tanpa mengatur buffer dan shader satu per satu, tetapi data vertex, transform, dan proses rendering tetap dikelola di belakang layar. Material Basic tidak memerlukan pencahayaan, sedangkan Lambert dan Phong bereaksi terhadap Light. Shadow membutuhkan pengaturan pada renderer, sumber cahaya, object, dan ground sekaligus. Delta time membantu menjaga kecepatan animasi lebih konsisten pada frame rate yang berbeda. OrbitControls dan pergantian kamera memudahkan inspeksi scene dari berbagai sudut.
 
-## Identitas mahasiswa
-
-- **Nama:** [Isi nama]
-- **NRP:** [Isi NRP]

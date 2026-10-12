@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>Three.js Mini 3D Scene — Pertemuan 6</title>
+  </head>
+  <body>
+    <div id="app">
+      <section id="hud" class="panel" aria-label="Informasi scene">
+        <div class="eyebrow">EF234504 · GRAFIKA KOMPUTER · PERTEMUAN 6</div>
+        <h1>Three.js Mini 3D Scene</h1>
+        <p class="subtitle">All Challenges A–H</p>
+        <div id="stats" class="stats" aria-live="polite">
+          <div><span>Camera</span><strong id="cameraStat">Perspective</strong></div>
+          <div><span>Meshes</span><strong id="objectStat">—</strong></div>
+          <div><span>Triangles</span><strong id="triangleStat">—</strong></div>
+          <div><span>FPS</span><strong id="fpsStat">—</strong></div>
+          <div><span>Cube material</span><strong id="materialStat">Lambert</strong></div>
+          <div><span>Shadow map</span><strong id="shadowStat">1024 × 1024</strong></div>
+          <div class="wide"><span>Camera position</span><strong id="positionStat">—</strong></div>
+          <div class="wide"><span>Animation</span><strong id="animationStat">Running</strong></div>
+        </div>
+        <p class="gallery-note"><b>Material Gallery</b> — left to right: Basic, Normal, Lambert, Phong.</p>
+      </section>
+
+      <section id="control-panel" class="panel" aria-label="Kontrol scene">
+        <div class="panel-heading">Scene controls</div>
+        <button id="camera-button" type="button">Camera: Perspective (P)</button>
+        <button id="reset-camera-button" type="button">Reset camera (R)</button>
+        <button id="animation-button" type="button">Pause animation (Space)</button>
+        <button id="material-button" type="button">Cube material: Lambert (M)</button>
+        <div class="control-divider"></div>
+        <div class="control-label">Shadow quality</div>
+        <div class="button-row">
+          <button class="quality-button" data-quality="512" type="button">512</button>
+          <button class="quality-button active" data-quality="1024" type="button">1024</button>
+          <button class="quality-button" data-quality="2048" type="button">2048</button>
+        </div>
+        <div class="control-divider"></div>
+        <div class="control-label">Keyboard</div>
+        <p class="key-help"><kbd>← ↑ ↓ →</kbd> Move cube</p>
+        <p class="key-help"><kbd>Q</kbd> / <kbd>E</kbd> Rotate cube</p>
+        <p class="key-help"><kbd>P</kbd> Camera · <kbd>R</kbd> Reset</p>
+        <p class="key-help"><kbd>Space</kbd> Pause/resume · <kbd>M</kbd> Material</p>
+        <p class="key-help muted">Mouse: drag to orbit · scroll to zoom · right-drag to pan</p>
+        <div id="challenge-status" class="challenge-status">Challenges A–H active</div>
+      </section>
+
+      <div id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

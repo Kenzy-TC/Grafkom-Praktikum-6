@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#07111f" />
+    <link rel="stylesheet" href="/src/style.css" />
     <title>Three.js Mini 3D Scene — Pertemuan 6</title>
   </head>
   <body>
@@ -47,6 +48,43 @@
         <p class="key-help muted">Mouse: drag to orbit · scroll to zoom · right-drag to pan</p>
         <div id="challenge-status" class="challenge-status">Challenges A–H active</div>
       </section>
+
+      <section class="canvas-section">
+
+        <div class="canvas-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              LIVE RENDER
+            </span>
+
+            <h2>
+              WebGL Canvas
+            </h2>
+
+          </div>
+
+          <span
+            id="statusBadge"
+            class="status status-badge"
+          >
+            ● RUNNING
+          </span>
+
+        </div>
+
+        <div class="canvas-layout">
+          <div class="canvas-wrapper">
+            <div class="canvas-frame">
+              <canvas
+                id="glCanvas"
+                width="1100"
+                height="650"
+              ></canvas>
+              </div>
+            </div>
+          </div>
 
       <div id="toast" role="status" aria-live="polite"></div>
     </div>

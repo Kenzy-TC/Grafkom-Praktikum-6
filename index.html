@@ -11,7 +11,7 @@
       <section id="hud" class="panel" aria-label="Informasi scene">
         <div class="eyebrow">EF234504 · GRAFIKA KOMPUTER · PERTEMUAN 6</div>
         <h1>Three.js Mini 3D Scene</h1>
-        <p class="subtitle">All Challenges A–H</p>
+        <p class="subtitle">Interactive scene · Challenges A–H</p>
         <div id="stats" class="stats" aria-live="polite">
           <div><span>Camera</span><strong id="cameraStat">Perspective</strong></div>
           <div><span>Meshes</span><strong id="objectStat">—</strong></div>
@@ -22,31 +22,105 @@
           <div class="wide"><span>Camera position</span><strong id="positionStat">—</strong></div>
           <div class="wide"><span>Animation</span><strong id="animationStat">Running</strong></div>
         </div>
-        <p class="gallery-note"><b>Material Gallery</b> — left to right: Basic, Normal, Lambert, Phong.</p>
+        <p id="gallery-note" class="gallery-note"><b>Material Gallery</b> — Basic, Normal, Lambert, dan Phong.</p>
       </section>
 
-      <section id="control-panel" class="panel" aria-label="Kontrol scene">
-        <div class="panel-heading">Scene controls</div>
-        <button id="camera-button" type="button">Camera: Perspective (P)</button>
-        <button id="reset-camera-button" type="button">Reset camera (R)</button>
-        <button id="animation-button" type="button">Pause animation (Space)</button>
-        <button id="material-button" type="button">Cube material: Lambert (M)</button>
-        <div class="control-divider"></div>
-        <div class="control-label">Shadow quality</div>
-        <div class="button-row">
-          <button class="quality-button" data-quality="512" type="button">512</button>
-          <button class="quality-button active" data-quality="1024" type="button">1024</button>
-          <button class="quality-button" data-quality="2048" type="button">2048</button>
+      <aside id="control-panel" class="panel" aria-label="Panel kontrol scene">
+        <div class="panel-topline">
+          <div>
+            <div class="eyebrow">CONTROL DECK</div>
+            <h2 class="panel-heading">Scene controls</h2>
+          </div>
+          <span class="live-dot" title="Scene aktif"></span>
         </div>
-        <div class="control-divider"></div>
-        <div class="control-label">Keyboard</div>
-        <p class="key-help"><kbd>← ↑ ↓ →</kbd> Move cube</p>
-        <p class="key-help"><kbd>Q</kbd> / <kbd>E</kbd> Rotate cube</p>
-        <p class="key-help"><kbd>P</kbd> Camera · <kbd>R</kbd> Reset</p>
-        <p class="key-help"><kbd>Space</kbd> Pause/resume · <kbd>M</kbd> Material</p>
-        <p class="key-help muted">Mouse: drag to orbit · scroll to zoom · right-drag to pan</p>
-        <div id="challenge-status" class="challenge-status">Challenges A–H active</div>
-      </section>
+
+        <div class="button-grid">
+          <button id="camera-button" type="button">Camera: Perspective (P)</button>
+          <button id="reset-camera-button" type="button" class="secondary">Reset camera (R)</button>
+          <button id="animation-button" type="button">Pause animation (Space)</button>
+          <button id="material-button" type="button" class="secondary">Cube material: Lambert (M)</button>
+        </div>
+
+        <details class="control-section" open>
+          <summary>Camera lens</summary>
+          <div class="control-content">
+            <div class="range-heading"><label for="fov-slider">Field of View (FOV)</label><output id="fov-value" for="fov-slider">60°</output></div>
+            <input id="fov-slider" type="range" min="35" max="100" step="1" value="60" />
+            <p class="hint" id="fov-hint">FOV hanya berlaku pada Perspective Camera.</p>
+          </div>
+        </details>
+
+        <details class="control-section" open>
+          <summary>Lighting</summary>
+          <div class="control-content">
+            <div class="range-heading"><label for="light-intensity-slider">Directional light intensity</label><output id="light-intensity-value" for="light-intensity-slider">2.8</output></div>
+            <input id="light-intensity-slider" type="range" min="0" max="5" step="0.1" value="2.8" />
+            <div class="range-heading space-top"><label for="ambient-intensity-slider">Ambient light intensity</label><output id="ambient-intensity-value" for="ambient-intensity-slider">0.55</output></div>
+            <input id="ambient-intensity-slider" type="range" min="0" max="1.5" step="0.05" value="0.55" />
+            <div class="button-grid one-col space-top">
+              <button id="helpers-button" type="button" class="secondary" aria-pressed="false">Show light helpers</button>
+              <button id="light-orbit-button" type="button" aria-pressed="true">Light orbit: ON</button>
+            </div>
+          </div>
+        </details>
+
+        <details class="control-section" open>
+          <summary>Geometry playground</summary>
+          <div class="control-content">
+            <label class="standalone-label" for="geometry-type">Geometry</label>
+            <select id="geometry-type">
+              <option value="sphere">Sphere</option>
+              <option value="box">Box</option>
+              <option value="cylinder">Cylinder</option>
+              <option value="cone">Cone</option>
+              <option value="torus">Torus</option>
+            </select>
+            <div class="range-heading space-top"><label for="geometry-detail-slider">Geometry detail / segments</label><output id="geometry-detail-value" for="geometry-detail-slider">24</output></div>
+            <input id="geometry-detail-slider" type="range" min="8" max="48" step="4" value="24" />
+            <div class="range-heading space-top"><label for="geometry-scale-slider">Geometry scale</label><output id="geometry-scale-value" for="geometry-scale-slider">1.00×</output></div>
+            <input id="geometry-scale-slider" type="range" min="0.5" max="1.8" step="0.05" value="1" />
+            <p class="hint">Ubah bentuk, kepadatan segment, dan ukuran objek Geometry Playground.</p>
+          </div>
+        </details>
+
+        <details class="control-section" open>
+          <summary>OrbitControls · Camera</summary>
+          <div class="control-content">
+            <label class="check-row"><input id="orbit-enabled" type="checkbox" checked /><span>Aktifkan kontrol kamera</span></label>
+            <label class="check-row"><input id="orbit-pan" type="checkbox" checked /><span>Izinkan pan</span></label>
+            <label class="check-row"><input id="orbit-damping" type="checkbox" checked /><span>Damping</span></label>
+            <div class="range-heading space-top"><label for="damping-factor-slider">Damping factor</label><output id="damping-factor-value" for="damping-factor-slider">0.075</output></div>
+            <input id="damping-factor-slider" type="range" min="0.01" max="0.2" step="0.005" value="0.075" />
+            <div class="range-heading space-top"><label for="rotate-speed-slider">Camera rotate speed</label><output id="rotate-speed-value" for="rotate-speed-slider">1.0×</output></div>
+            <input id="rotate-speed-slider" type="range" min="0.2" max="3" step="0.1" value="1" />
+            <div class="range-heading space-top"><label for="zoom-speed-slider">Camera zoom speed</label><output id="zoom-speed-value" for="zoom-speed-slider">1.0×</output></div>
+            <input id="zoom-speed-slider" type="range" min="0.2" max="3" step="0.1" value="1" />
+            <p class="hint">Drag kiri: orbit · scroll: zoom · drag kanan: pan.</p>
+          </div>
+        </details>
+
+        <details class="control-section">
+          <summary>Challenge & rendering</summary>
+          <div class="control-content">
+            <div class="control-label">Shadow quality</div>
+            <div class="button-row">
+              <button class="quality-button" data-quality="512" type="button">512</button>
+              <button class="quality-button active" data-quality="1024" type="button">1024</button>
+              <button class="quality-button" data-quality="2048" type="button">2048</button>
+            </div>
+            <div class="button-grid one-col space-top">
+              <button id="gallery-button" type="button" class="secondary" aria-pressed="true">Hide material gallery</button>
+            </div>
+            <div class="control-divider"></div>
+            <div class="control-label">Keyboard</div>
+            <p class="key-help"><kbd>← ↑ ↓ →</kbd> Move cube</p>
+            <p class="key-help"><kbd>Q</kbd> / <kbd>E</kbd> Rotate cube</p>
+            <p class="key-help"><kbd>P</kbd> Camera · <kbd>R</kbd> Reset</p>
+            <p class="key-help"><kbd>Space</kbd> Pause/resume · <kbd>M</kbd> Material</p>
+            <div id="challenge-status" class="challenge-status">Challenges A–H active</div>
+          </div>
+        </details>
+      </aside>
 
       <div id="toast" role="status" aria-live="polite"></div>
     </div>

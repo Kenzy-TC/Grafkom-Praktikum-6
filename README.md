@@ -7,8 +7,10 @@
 
 ## Identitas Mahasiswa
 
-- **Nama:** [Isi nama]
-- **NRP:** [Isi NRP]
+- **Nama:   Mario Napitupulu** 
+- **NRP :   5025241085**
+- **Nama:   Nathanael Oliver** 
+- **NRP :   5025241096** 
 
 ## 1. Deskripsi Proyek
 

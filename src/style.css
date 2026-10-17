@@ -70,6 +70,7 @@ input:focus-visible {
 #app {
   position: relative;
   isolation: isolate;
+  height: 100vh;
 }
 
 /* Shared panel appearance */
@@ -500,7 +501,7 @@ kbd {
 /* Canvas area */
 .canvas-section {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   inset: 0;
   display: flex;
   flex-direction: column;
@@ -516,6 +517,7 @@ kbd {
 
 .canvas-heading {
   position: absolute;
+  z-index: 2;
   top: 18px;
   left: 50%;
   display: flex;
@@ -568,6 +570,7 @@ kbd {
 
 .canvas-wrapper {
   position: absolute;
+  z-index: 0;
   inset: 0;
   display: flex;
   align-items: center;

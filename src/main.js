@@ -4,10 +4,10 @@ import './style.css';
 
 // -----------------------------------------------------------------------------
 // Three.js Mini 3D Scene — Pertemuan 6
-// Baseline + Challenge A–H + interactive controls requested for the playground.
 // -----------------------------------------------------------------------------
 
 const app = document.querySelector('#app');
+const canvasFrame = document.querySelector('.canvas-frame');
 const toast = document.querySelector('#toast');
 const $ = (selector) => document.querySelector(selector);
 const info = {
@@ -58,7 +58,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.domElement.setAttribute('aria-label', 'Interactive Three.js 3D scene');
 renderer.domElement.tabIndex = 0;
-app.prepend(renderer.domElement);
+canvasFrame.append(renderer.domElement);
 
 // OrbitControls configuration is stored separately so it survives camera swap.
 const orbitSettings = {

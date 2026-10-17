@@ -2,7 +2,7 @@
 
 **Mata kuliah:** EF234504 — Grafika Komputer  
 **Topik:** Introduction to Three.js  
-**Implementasi:** seluruh Challenge A–H dari modul Pertemuan 6.
+**Implementasi:** baseline praktikum dan seluruh Challenge A–H, dilengkapi panel kontrol interaktif.
 
 | Detail | Keterangan |
 | --- | --- |
@@ -13,74 +13,102 @@
 
 ## Deskripsi
 
-Scene interaktif berisi cube yang dapat dikontrol, sphere animasi, ground, material gallery, cylinder, cone, torus, AmbientLight, serta DirectionalLight bergerak. Scene memakai `OrbitControls`, shadow map, HUD statistik, dua mode kamera, dan animasi berbasis delta time.
+Aplikasi membangun mini scene 3D menggunakan Three.js dan Vite. Scene berisi cube yang dapat dipindahkan dan diputar, sphere animasi, ground, geometry tambahan, Material Gallery, Geometry Playground, AmbientLight, serta DirectionalLight dengan orbit yang dapat diaktifkan/dinonaktifkan. Panel kontrol mencakup FOV, intensitas cahaya, detail/ukuran geometry, OrbitControls, light helpers, kualitas shadow, pergantian kamera, dan statistik rendering.
 
-## Challenge yang dikerjakan
+## Challenge A–H
 
 | Challenge | Implementasi |
 |---|---|
-| A — Tambah Geometry | CylinderGeometry, ConeGeometry, dan TorusGeometry; masing-masing menggunakan material, transform, dan posisi tersendiri. |
-| B — Material Gallery | Empat sphere memakai geometry yang sama dengan MeshBasicMaterial, MeshNormalMaterial, MeshLambertMaterial, dan MeshPhongMaterial. |
-| C — OrthographicCamera | Tekan **P** atau tombol kamera untuk berpindah Perspective/Orthographic. Posisi dan target kontrol kamera dipertahankan. Resize memperbarui kedua projection matrix. |
-| D — Light Animation | DirectionalLight bergerak mengelilingi scene dan penanda kecil mengikuti posisinya. |
-| E — Shadow Quality | Tombol 512, 1024, dan 2048 mengubah resolusi shadow map. Default 1024 agar beban rendering tetap moderat. |
-| F — Scene Information | HUD menampilkan jenis kamera, mesh count, triangle count dari `renderer.info`, FPS sederhana, posisi kamera, material cube, status animasi, dan resolusi shadow. |
-| G — Toggle Animation | Tombol atau **Space** menjeda/melanjutkan animasi objek dan lampu; navigasi kamera tetap aktif. |
-| H — Continuous Object Control | Tahan tombol panah untuk memindahkan cube, **Q/E** untuk memutar cube. Gerakan memakai delta time. |
+| A — Tambah Geometry | CylinderGeometry, ConeGeometry, dan TorusGeometry; masing-masing memiliki material, transform, dan posisi. |
+| B — Material Gallery | Empat sphere memakai geometry sama dengan MeshBasicMaterial, MeshNormalMaterial, MeshLambertMaterial, dan MeshPhongMaterial. Tombol **Show/Hide material gallery** menampilkan atau menyembunyikannya. |
+| C — OrthographicCamera | Tombol kamera atau **P** berpindah Perspective/Orthographic. Resize memperbarui projection matrix untuk kedua kamera. |
+| D — Light Animation | DirectionalLight dapat bergerak mengorbit scene. Tombol **Light orbit: ON/OFF** mengontrol gerak ini. |
+| E — Shadow Quality | Pilihan shadow map 512, 1024, atau 2048. Default 1024 agar beban render tetap moderat. |
+| F — Scene Information | HUD menampilkan tipe kamera, jumlah mesh, triangle count, FPS, posisi kamera, material cube, status animasi, dan resolusi shadow. |
+| G — Toggle Animation | Tombol atau **Space** pause/resume animasi object dan gerak light; navigasi kamera tetap bisa digunakan. |
+| H — Continuous Object Control | Tahan tombol panah untuk memindahkan cube, **Q/E** untuk memutar cube. Gerakan berbasis delta time. |
 
-## Fitur baseline yang juga disertakan
+## Panel kontrol tambahan
 
-- Scene dan background.
-- PerspectiveCamera dengan FOV, aspect, near, dan far yang ditentukan.
-- WebGLRenderer dengan antialias, pixel ratio dibatasi maksimal 2, dan responsive resize.
-- BoxGeometry, SphereGeometry, dan PlaneGeometry sebagai ground.
-- Material yang merespons cahaya dan material yang tidak bergantung pada cahaya.
-- AmbientLight, DirectionalLight, `castShadow`, dan `receiveShadow`.
-- OrbitControls untuk orbit, zoom, pan, damping, dan reset kamera.
-- `requestAnimationFrame()`, `THREE.Clock`, delta time, dan HUD.
+### Camera Lens
+- Slider **Field of View (FOV)** mengubah FOV PerspectiveCamera dari 35° hingga 100°.
+- FOV dinonaktifkan saat OrthographicCamera sedang aktif karena kamera ortografis tidak menggunakan parameter FOV.
+
+### Lighting
+- **Directional light intensity** mengatur intensitas DirectionalLight.
+- **Ambient light intensity** mengatur pencahayaan dasar AmbientLight.
+- **Show/Hide light helpers** menampilkan atau menyembunyikan DirectionalLightHelper dan CameraHelper untuk shadow camera.
+- **Light orbit ON/OFF** menghidupkan atau menjeda gerak melingkar lampu.
+
+### Geometry Playground
+- Pilih **Sphere, Box, Cylinder, Cone,** atau **Torus**.
+- Slider **Geometry detail / segments** mengubah jumlah segmen geometri. Detail yang lebih tinggi biasanya membuat bentuk melengkung lebih halus dengan lebih banyak vertex.
+- Slider **Geometry scale** mengubah skala objek pratinjau.
+
+### OrbitControls · Camera
+- **Aktifkan kontrol kamera** mengaktifkan/nonaktifkan input OrbitControls.
+- **Izinkan pan** mengaktifkan/nonaktifkan gerak geser kamera.
+- **Damping** mengaktifkan/nonaktifkan efek gerak kamera yang lebih halus.
+- Slider **Damping factor** mengatur kuatnya damping.
+- Slider **Camera rotate speed** mengatur kecepatan orbit.
+- Slider **Camera zoom speed** mengatur kecepatan zoom.
+- Pengaturan OrbitControls dipertahankan ketika mode kamera diganti.
+
+## Baseline yang juga disertakan
+
+- Vite + Node.js dan dependency `three`.
+- Scene, background, PerspectiveCamera, OrthographicCamera, dan WebGLRenderer.
+- Antialias, pixel ratio maksimum 2, dan responsive rendering.
+- BoxGeometry, SphereGeometry, PlaneGeometry untuk ground, serta minimal dua jenis material.
+- Mesh, position, rotation, scale, AmbientLight, DirectionalLight, shadow map, `castShadow`, dan `receiveShadow`.
+- `requestAnimationFrame()`, `THREE.Clock`, dan delta time.
 
 ## Cara menjalankan
 
-Pastikan Node.js dan npm telah terpasang. Buka terminal di direktori proyek, lalu jalankan:
+Pastikan Node.js dan npm sudah terpasang. Buka folder proyek di VS Code, pilih **Terminal → New Terminal**, lalu jalankan:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka alamat lokal yang ditampilkan Vite di browser. Untuk memeriksa build production:
+Buka URL yang ditampilkan Vite, biasanya `http://localhost:5173/`. Di Windows PowerShell yang memblokir `npm.ps1`, gunakan:
+
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
+
+Jangan menjalankan file `index.html` langsung atau melalui Live Server; proyek ini menggunakan Vite untuk menyelesaikan import module Three.js.
+
+Untuk build production:
 
 ```bash
 npm run build
 ```
 
-Folder `node_modules/` tidak perlu dikumpulkan karena dapat dibuat ulang dengan `npm install`.
+Folder `node_modules/` tidak perlu dikumpulkan karena dependency bisa di-install lagi dari `package.json`.
 
-## Kontrol
+## Kontrol keyboard dan mouse
 
 | Input | Fungsi |
 |---|---|
-| Drag tombol kiri | Orbit kamera |
+| Drag kiri | Orbit kamera |
 | Scroll | Zoom |
-| Drag tombol kanan | Pan |
-| **P** | Toggle Perspective/Orthographic |
-| **R** | Reset ke kamera Perspective awal |
+| Drag kanan | Pan (jika diizinkan) |
+| **P** | Berpindah Perspective/Orthographic |
+| **R** | Reset kamera ke Perspective awal dan FOV 60° |
 | **Space** | Pause/resume animasi |
 | **M** | Toggle material cube antara Lambert dan Basic |
 | **Arrow keys** | Gerakkan cube |
 | **Q / E** | Putar cube |
-| Tombol 512 / 1024 / 2048 | Ubah kualitas shadow map |
 
-## Catatan debugging
+## Debugging
 
-- Jika muncul `Failed to resolve import "three"`, jalankan `npm install` dari root proyek.
-- Jika canvas kosong, periksa Console browser dan pastikan Vite berjalan.
-- Material Lambert/Phong memerlukan Light; Basic tidak bergantung pada Light.
-- Jika shadow tidak terlihat, periksa `renderer.shadowMap.enabled`, `DirectionalLight.castShadow`, properti `castShadow` pada object, `ground.receiveShadow`, serta batas shadow camera.
-- Resolusi shadow 2048 lebih berat daripada 512/1024. Pilih resolusi yang sesuai dengan kemampuan perangkat.
-- Bila tombol keyboard tidak merespons, klik area scene dahulu dan pastikan fokus tidak berada pada tombol panel.
-
-## Refleksi (contoh yang dapat disesuaikan)
-
-Three.js menyederhanakan pekerjaan grafika 3D yang sebelumnya dilakukan langsung melalui WebGL. Geometry dan Material dapat digabungkan menjadi Mesh tanpa mengatur buffer dan shader satu per satu, tetapi data vertex, transform, dan proses rendering tetap dikelola di belakang layar. Material Basic tidak memerlukan pencahayaan, sedangkan Lambert dan Phong bereaksi terhadap Light. Shadow membutuhkan pengaturan pada renderer, sumber cahaya, object, dan ground sekaligus. Delta time membantu menjaga kecepatan animasi lebih konsisten pada frame rate yang berbeda. OrbitControls dan pergantian kamera memudahkan inspeksi scene dari berbagai sudut.
+- `Failed to resolve import "three"`: jalankan `npm install` pada root folder proyek.
+- Canvas kosong: jalankan lewat `npm run dev`, buka Console browser, dan periksa pesan error.
+- Lambert/Phong gelap: pastikan lampu aktif dan intensitasnya cukup.
+- Shadow tidak tampak: periksa `renderer.shadowMap.enabled`, `DirectionalLight.castShadow`, object `castShadow`, `ground.receiveShadow`, dan batas shadow camera.
+- Rendering terlalu berat: turunkan shadow quality dan geometry detail.
+- Tidak bisa menggerakkan kamera: aktifkan **Aktifkan kontrol kamera**; pan memerlukan opsi **Izinkan pan** aktif.
 

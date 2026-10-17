@@ -5,23 +5,13 @@
 **Dosen:** Dr. Darlis Herumurti  
 **Departemen:** Teknik Informatika
 
-<<<<<<< HEAD
-| Detail | Keterangan |
+| Nama | NRP |
 | --- | --- |
 | **Nama Anggota 1** | Mario Napitupulu |
 | **NRP Anggota 1** | 5025241085 |
 | **Nama Anggota 2** | Nathanael Oliver Amadhika Yuswana |
 | **NRP Anggota 2** | 5025241109 |
 
-## Deskripsi
-=======
-## Identitas Mahasiswa
->>>>>>> 42f2b37bb328b71c051179f8c8549fe3c8bab298
-
-**Nama:   Mario Napitupulu**    
-**NRP :   5025241085**      
-**Nama:   Nathanael Oliver**    
-**NRP :   5025241109** 
 
 ## 1. Deskripsi Proyek
 
@@ -239,22 +229,22 @@ Folder `node_modules/` tidak perlu disertakan ketika mengumpulkan atau mengungga
 
 ## 13. Checklist Pengujian
 
-- [ ] `npm install` berhasil.
-- [ ] `npm run dev` berjalan dan scene tampil di browser.
-- [ ] Cube, sphere, ground, serta geometry tambahan terlihat.
-- [ ] FOV slider mengubah sudut pandang Perspective Camera.
-- [ ] Slider intensitas cahaya mengubah pencahayaan.
-- [ ] Geometry type, detail, dan scale mengubah Geometry Playground.
-- [ ] Orbit, zoom, pan, damping, rotate speed, dan zoom speed dapat diatur.
-- [ ] Light helpers, Light orbit, dan Material Gallery dapat di-toggle.
-- [ ] Pergantian Perspective/Orthographic Camera dan reset kamera bekerja.
-- [ ] Shadow quality berubah sesuai opsi.
-- [ ] Pause/resume, kontrol keyboard cube, dan animasi berbasis delta time bekerja.
-- [ ] Scene tetap responsif ketika ukuran browser berubah.
-- [ ] Tidak ada error Console selama penggunaan normal.
-- [ ] Screenshot scene akhir sudah disimpan untuk dokumentasi praktikum.
+- [✅] `npm install` berhasil.
+- [✅] `npm run dev` berjalan dan scene tampil di browser.
+- [✅] Cube, sphere, ground, serta geometry tambahan terlihat.
+- [✅] FOV slider mengubah sudut pandang Perspective Camera.
+- [✅] Slider intensitas cahaya mengubah pencahayaan.
+- [✅] Geometry type, detail, dan scale mengubah Geometry Playground.
+- [✅] Orbit, zoom, pan, damping, rotate speed, dan zoom speed dapat diatur.
+- [✅] Light helpers, Light orbit, dan Material Gallery dapat di-toggle.
+- [✅] Pergantian Perspective/Orthographic Camera dan reset kamera bekerja.
+- [✅] Shadow quality berubah sesuai opsi.
+- [✅] Pause/resume, kontrol keyboard cube, dan animasi berbasis delta time bekerja.
+- [✅] Scene tetap responsif ketika ukuran browser berubah.
+- [✅] Tidak ada error Console selama penggunaan normal.
+- [✅] Screenshot scene akhir sudah disimpan untuk dokumentasi praktikum.
 
 ## 14. Refleksi Praktikum
 
 Praktikum ini menunjukkan bagaimana Three.js menyederhanakan pekerjaan grafika yang sebelumnya perlu dikelola secara manual di WebGL, seperti buffer, shader, matrix, dan draw call. Geometry menyimpan data vertex, sedangkan material menentukan cara permukaan dirender dan apakah material merespons lighting. Scene menggabungkan objek, kamera, dan light agar dapat dirender oleh WebGLRenderer. Penggunaan delta time membantu menjaga kecepatan animasi agar lebih konsisten, sementara responsive rendering memastikan proyeksi kamera menyesuaikan ukuran jendela. Pengaturan shadow memperlihatkan bahwa bayangan memerlukan konfigurasi pada renderer, sumber cahaya, objek, dan ground.
->>>>>>> 42f2b37bb328b71c051179f8c8549fe3c8bab298
+
